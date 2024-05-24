@@ -5,7 +5,7 @@ filepath = os.getcwd()
 
 # === URL
 url = input(str("URL: "))
-print("入力URL: " + url)
+# print("入力URL: " + url)
 # print(type(url))
 
 dl_option = {
