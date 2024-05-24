@@ -18,7 +18,9 @@ print("mode: " + str(mode))
 print(type(mode))
 
 if mode == 1: # mp4
-    print("mode: mp4")
+    option = {
+        ""
+    }
 elif mode == 2: # mp3
     print("mode: mp3")
 elif mode == 3: # wav
