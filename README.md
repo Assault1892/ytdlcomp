@@ -9,5 +9,5 @@ Python 3.8以降が入ってりゃ動きます多分
 
 ```bash
 pip install -r requirements.txt
-python app.py
+python main.py
 ```
