@@ -11,17 +11,17 @@ while True:
     try:
         mode = int(input("\ntype | 1: mp4, 2: mp3, 3: wav, 4: cancel: "))
         break
-e   except ValueError:
+    except ValueError:
         pass
 
 print("mode: " + str(mode))
 print(type(mode))
 
 if mode == 1: # mp4
-    a
+    print("mode: mp4")
 elif mode == 2: # mp3
-    b
+    print("mode: mp3")
 elif mode == 3: # wav
-    e
+    print("mode: wav")
 else: # cancel
-    d
+    print("nope")
