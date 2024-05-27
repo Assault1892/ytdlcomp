@@ -2,6 +2,7 @@ from yt_dlp import YoutubeDL
 import os
 
 filepath = os.getcwd()
+mode = 1
 
 # === URL
 url = input(str("URL: "))
@@ -10,17 +11,21 @@ url = input(str("URL: "))
 
 # === mode
 
-while True:
-    try:
-        mode = int(input("1: best mp4, 2: mp3, 3: bestaudio (wav), 4: cancel: "))
-        break
-    except ValueError:
-        pass
-
 # print("mode: " + str(mode))
 # print(type(mode))
 
-if mode == 1: # mp4
+if mode == 1: # url
+    while True:
+        try:
+            dlmode = int(input("1: best mp4, 2: mp3, 3: bestaudio (wav), 4: cancel: "))
+            mode = 2
+            break
+        except ValueError:
+            pass
+    else:
+        exit
+
+if dlmode == 1: # mp4
     dl_option = {
         "restrictfilenames": "true", # ファイル名をASCII文字列に制限
         "format": "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]", # 最高品質mp4
@@ -30,7 +35,7 @@ if mode == 1: # mp4
     with YoutubeDL(dl_option) as ydl:
         res = ydl.download(url)
 
-elif mode == 2: # mp3
+elif dlmode == 2: # mp3
     dl_option = {
         "restrictfilenames": "true", # ファイル名をASCII文字列に制限
         "format": "mp3/bestaudio/best",
@@ -46,7 +51,7 @@ elif mode == 2: # mp3
     with YoutubeDL(dl_option) as ydl:
         res = ydl.download(url)
 
-elif mode == 3: # wav
+elif dlmode == 3: # wav
     dl_option = {
         "restrictfilenames": "true", # ファイル名をASCII文字列に制限
         "format": "wav/bestaudio/best",
@@ -57,3 +62,4 @@ elif mode == 3: # wav
         res = ydl.download(url)
 else: # cancel
     print("nope")
+    mode = 1
