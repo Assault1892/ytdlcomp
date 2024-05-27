@@ -1,7 +1,9 @@
 from yt_dlp import YoutubeDL
 import os
+import sys
 
 filepath = os.getcwd()
+mode = 0
 
 def download(url, dltype):
     if dltype == 1: # mp4
@@ -29,19 +31,23 @@ def download(url, dltype):
         "outtmpl": f"{filepath}/outputs/wav/%(title)s.%(ext)s" 
     }
     else:
-        print("no")
-        pass
+        print("bye!\n")
+        sys.exit()
     
     with YoutubeDL(dl_option) as ydl:
         res = ydl.download(url)
-
-url = input(str("URL: "))
+    print("download completed; return back to url...\n")
 
 while True:
-    try:
-        dltype = int(input("1: best mp4, 2: mp3, 3: bestaudio (wav), 4: cancel: "))
-        break
-    except ValueError:
-        pass
-
-download(url, dltype)
+    url = input(str("URL: "))
+    while True:
+        try:
+            dltype = int(input("1: best mp4, 2: mp3, 3: bestaudio (wav), 4: cancel: "))
+            break
+        except ValueError:
+            pass
+    if dltype > 4:
+        print("bye!\n")
+        sys.exit()
+    else:
+        download(url, dltype)
