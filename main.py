@@ -3,7 +3,6 @@ import os
 import sys
 
 filepath = os.getcwd()
-mode = 0
 
 def download(url, dltype):
     if dltype == 1: # mp4
