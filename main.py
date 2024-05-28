@@ -27,7 +27,13 @@ def download(url, dltype):
         dl_option = {
         "restrictfilenames": "true", # ファイル名をASCII文字列に制限
         "format": "wav/bestaudio/best",
-        "outtmpl": f"{filepath}/outputs/wav/%(title)s.%(ext)s" 
+        "outtmpl": f"{filepath}/outputs/wav/%(title)s.%(ext)s",
+        "postprocessors": [
+            {
+                "key": "FFmpegExtractAudio",
+                "preferredcodec": "wav"
+            }
+        ]
     }
     else:
         print("bye!\n")
