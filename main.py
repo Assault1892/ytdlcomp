@@ -55,4 +55,7 @@ while True:
         print("bye!\n")
         sys.exit()
     else:
-        download(url, dltype)
+        if url.startswith("https://x.com/"):
+            url.replace("https://x.com/", "https://twitter.com/")
+        print(url)
+        # download(url, dltype)
