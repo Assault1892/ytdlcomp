@@ -1,4 +1,5 @@
 from yt_dlp import YoutubeDL
+import re
 import os
 import sys
 
@@ -55,7 +56,9 @@ while True:
         print("bye!\n")
         sys.exit()
     else:
-        if url.startswith("https://x.com/"):
-            url.replace("https://x.com/", "https://twitter.com/")
-        print(url)
-        # download(url, dltype)
+        # x.comチェック。ハードコーディング地獄で好きじゃないのでいつか変える。
+        if re.match(r"https://(x|twitter).com/", url):
+            url = re.sub(r"https://(x|twitter).com/", "https://twitter.com/", url)
+            print(url)
+
+        download(url, dltype)
