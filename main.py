@@ -8,13 +8,13 @@ filepath = os.getcwd()
 def download(url, dltype):
     if dltype == 1: # mp4
         dl_option = {
-        "restrictfilenames": "true", # ファイル名をASCII文字列に制限
+        "windowsfilenames": "true", # ファイル名をASCII文字列に制限
         "format": "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]", # 最高品質mp4
         "outtmpl": f"{filepath}/outputs/mp4/%(title)s.%(ext)s" 
     }
     elif dltype == 2: # mp3
         dl_option = {
-        "restrictfilenames": "true", # ファイル名をASCII文字列に制限
+        "windowsfilenames": "true", # ファイル名をASCII文字列に制限
         "format": "mp3/bestaudio/best",
         "outtmpl": f"{filepath}/outputs/mp3/%(title)s.%(ext)s",
         "postprocessors": [
@@ -26,7 +26,7 @@ def download(url, dltype):
     }
     elif dltype == 3: # wav
         dl_option = {
-        "restrictfilenames": "true", # ファイル名をASCII文字列に制限
+        "windowsfilenames": "true", # ファイル名をASCII文字列に制限
         "format": "wav/bestaudio/best",
         "outtmpl": f"{filepath}/outputs/wav/%(title)s.%(ext)s",
         "postprocessors": [
